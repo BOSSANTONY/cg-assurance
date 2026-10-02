@@ -1,5 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.contrib.sitemaps.views import sitemap
+from assurance.sitemaps import StaticViewSitemap
 
 
 from . import views
