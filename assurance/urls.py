@@ -12,6 +12,12 @@ urlpatterns = [
         views.home,
         name="home"
     ),
+        path(
+    "sitemap.xml",
+    sitemap,
+    {"sitemaps": {"static": StaticViewSitemap}},
+    name="django.contrib.sitemaps.views.sitemap",
+),
     path(
     "robots.txt",
     views.robots_txt,
