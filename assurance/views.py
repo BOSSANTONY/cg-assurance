@@ -405,13 +405,37 @@ def profile(request):
         }
     )
 
-
-
 from django.http import HttpResponse
-def robots_txt(request):
-    content = """User-agent: *
-Allow: /
+from django.urls import reverse
 
-Sitemap: https://cg-assurance.vercel.app/sitemap.xml
+
+def sitemap_xml(request):
+    urls = [
+        reverse("home"),
+        reverse("services"),
+        reverse("pricing"),
+        reverse("faq"),
+        reverse("contact"),
+    ]
+
+    domain = "https://cg-assurance.vercel.app"
+
+    xml_urls = ""
+
+    for url in urls:
+        xml_urls += f"""
+    <url>
+        <loc>{domain}{url}</loc>
+    </url>"""
+
+    content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{xml_urls}
+</urlset>
 """
-    return HttpResponse(content, content_type="text/plain")
+
+    return HttpResponse(
+        content,
+        content_type="application/xml"
+    )
+
