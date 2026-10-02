@@ -329,7 +329,6 @@ def claim_create(request):
         }
     )
 
-
 @login_required
 def documents(request):
 
@@ -405,3 +404,14 @@ def profile(request):
             "form": form
         }
     )
+
+
+
+from django.http import HttpResponse
+def robots_txt(request):
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://cg-assurance.vercel.app/sitemap.xml
+"""
+    return HttpResponse(content, content_type="text/plain")
