@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+
+{% block title %}
+CG-Assurance | Votre protection, notre engagement
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center min-vh-100">
+
+            <div class="col-lg-7">
+                <p></p>
+                <p></p>
+
+                <span class="hero-badge">
+                    Votre sécurité commence ici
+                </span>
+
+                <h1>
+                    Protégez ce qui
+                    <span>compte vraiment.</span>
+                </h1>
+
+                <p class="hero-text">
+
+                    Assurance automobile, santé,
+                    habitation, voyage, vie et entreprise.
+                    Gérez tout depuis un seul espace.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="{% url 'register' %}"
+                        class="btn btn-primary-custom btn-lg"
+                    >
+                        Obtenir un devis
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+
+                    <a
+                        href="{% url 'services' %}"
+                        class="btn btn-light btn-lg"
+                    >
+                        Découvrir nos assurances
+                    </a>
+
+                </div>
+
+
+                <div class="hero-trust">
+
+                    <div>
+                        <strong>24/7</strong>
+                        <span>Assistance</span>
+                    </div>
+
+                    <div>
+                        <strong>100%</strong>
+                        <span>Suivi en ligne</span>
+                    </div>
+
+                    <div>
+                        <strong>1 espace</strong>
+                        <span>Pour tout gérer</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5">
+
+                <div class="protection-card">
+
+                    <div class="protection-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h3>
+                        Votre protection
+                    </h3>
+
+                    <p>
+                        Retrouvez vos contrats,
+                        vos documents et vos
+                        déclarations au même endroit.
+                    </p>
+
+
+                    <div class="quick-actions">
+
+                        <a href="{% url 'register' %}">
+                            <i class="bi bi-file-earmark-text"></i>
+                            Demander un devis
+                        </a>
+
+                        <a href="{% url 'login' %}">
+                            <i class="bi bi-person"></i>
+                            Mon espace client
+                        </a>
+
+                        <a href="{% url 'contact' %}">
+                            <i class="bi bi-headset"></i>
+                            Besoin d'aide ?
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                NOS SOLUTIONS
+            </span>
+
+            <h2>
+                Une assurance adaptée à chaque besoin
+            </h2>
+
+            <p>
+                Choisissez la protection qui correspond
+                à votre situation.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            {% for product in products %}
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="insurance-card">
+
+                    <div class="card-icon">
+
+                        {% if product.type == "auto" %}
+                            <i class="bi bi-car-front"></i>
+
+                        {% elif product.type == "health" %}
+                            <i class="bi bi-heart-pulse"></i>
+
+                        {% elif product.type == "home" %}
+                            <i class="bi bi-house"></i>
+
+                        {% elif product.type == "travel" %}
+                            <i class="bi bi-airplane"></i>
+
+                        {% elif product.type == "life" %}
+                            <i class="bi bi-people"></i>
+
+                        {% else %}
+                            <i class="bi bi-building"></i>
+                        {% endif %}
+
+                    </div>
+
+                    <h3>
+                        {{ product.name }}
+                    </h3>
+
+                    <p>
+                        {{ product.description|truncatewords:25 }}
+                    </p>
+
+                    <a
+                        href="{% url 'quote_create' %}"
+                        class="card-link"
+                    >
+                        Demander un devis
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center">
+
+                <p>
+                    Nos produits d'assurance
+                    seront bientôt disponibles.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section section-light">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <span class="section-label">
+                    POURQUOI CG-ASSURANCE ?
+                </span>
+
+                <h2>
+                    L'assurance sans les complications.
+                </h2>
+
+                <p>
+                    Nous voulons rendre l'assurance
+                    plus simple et plus transparente.
+                </p>
+
+
+                <div class="feature">
+
+                    <i class="bi bi-check-circle"></i>
+
+                    <div>
+                        <h5>
+                            Gestion en ligne
+                        </h5>
+
+                        <p>
+                            Consultez vos contrats
+                            depuis votre espace client.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="bi bi-check-circle"></i>
+
+                    <div>
+
+                        <h5>
+                            Déclaration de sinistre
+                        </h5>
+
+                        <p>
+                            Déclarez votre sinistre
+                            directement depuis votre compte.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class="bi bi-check-circle"></i>
+
+                    <div>
+
+                        <h5>
+                            Assistance
+                        </h5>
+
+                        <p>
+                            Notre équipe vous accompagne
+                            lorsque vous en avez besoin.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="stats-box">
+
+                    <div>
+                        <strong>
+                            6+
+                        </strong>
+
+                        <span>
+                            solutions d'assurance
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>
+                            24/7
+                        </strong>
+
+                        <span>
+                            assistance
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>
+                            100%
+                        </strong>
+
+                        <span>
+                            suivi numérique
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>
+                            1
+                        </strong>
+
+                        <span>
+                            espace client
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta-section">
+
+    <div class="container text-center">
+
+        <h2>
+            Besoin d'une protection ?
+        </h2>
+
+        <p>
+            Créez votre compte et obtenez
+            votre premier devis.
+        </p>
+
+        <a
+            href="{% url 'register' %}"
+            class="btn btn-light btn-lg"
+        >
+            Commencer maintenant
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mes documents | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <div class="container">
+
+        <h1>
+            Mes documents
+        </h1>
+
+        <p>
+            Retrouvez vos documents d'assurance.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        {% for document in documents %}
+
+        <div class="dashboard-card mb-3">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <i class="bi bi-file-earmark-pdf fs-3 text-danger"></i>
+
+                    <strong class="ms-2">
+                        {{ document.name }}
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="{{ document.file.url }}"
+                    target="_blank"
+                    class="btn btn-outline-primary"
+                >
+                    Télécharger
+                </a>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            Aucun document disponible.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

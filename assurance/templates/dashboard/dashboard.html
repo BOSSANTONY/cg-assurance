@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mon espace | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <div class="container">
+
+        <span class="section-label">
+            ESPACE CLIENT
+        </span>
+
+        <h1>
+            Bonjour {{ user.first_name|default:user.username }} 👋
+        </h1>
+
+        <p>
+            Gérez vos assurances depuis votre espace personnel.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-card">
+
+                    <i class="bi bi-shield-check fs-2 text-success"></i>
+
+                    <div class="dashboard-number">
+                        {{ policies.count }}
+                    </div>
+
+                    <p>
+                        Contrats
+                    </p>
+
+                    <a href="{% url 'policies' %}">
+                        Voir mes contrats
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-card">
+
+                    <i class="bi bi-file-earmark-text fs-2 text-success"></i>
+
+                    <div class="dashboard-number">
+                        {{ quotes.count }}
+                    </div>
+
+                    <p>
+                        Demandes de devis
+                    </p>
+
+                    <a href="{% url 'quotes' %}">
+                        Voir mes devis
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-card">
+
+                    <i class="bi bi-exclamation-triangle fs-2 text-danger"></i>
+
+                    <div class="dashboard-number">
+                        {{ claims.count }}
+                    </div>
+
+                    <p>
+                        Sinistres
+                    </p>
+
+                    <a href="{% url 'claims' %}">
+                        Voir mes sinistres
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="dashboard-card">
+
+                    <i class="bi bi-folder fs-2 text-success"></i>
+
+                    <div class="dashboard-number">
+                        {{ documents.count }}
+                    </div>
+
+                    <p>
+                        Documents
+                    </p>
+
+                    <a href="{% url 'documents' %}">
+                        Mes documents
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+
+            <div class="col-lg-6">
+
+                <div class="dashboard-card">
+
+                    <h4>
+                        Actions rapides
+                    </h4>
+
+                    <div class="d-grid gap-2 mt-3">
+
+                        <a
+                            href="{% url 'quote_create' %}"
+                            class="btn btn-primary-custom"
+                        >
+                            <i class="bi bi-file-earmark-plus"></i>
+                            Demander un devis
+                        </a>
+
+                        <a
+                            href="{% url 'claim_create' %}"
+                            class="btn btn-outline-danger"
+                        >
+                            <i class="bi bi-exclamation-triangle"></i>
+                            Déclarer un sinistre
+                        </a>
+
+                        <a
+                            href="{% url 'profile' %}"
+                            class="btn btn-outline-secondary"
+                        >
+                            <i class="bi bi-person"></i>
+                            Modifier mon profil
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="dashboard-card">
+
+                    <h4>
+                        Mes derniers contrats
+                    </h4>
+
+
+                    {% for policy in policies|slice:":5" %}
+
+                    <div class="border-bottom py-3">
+
+                        <strong>
+                            {{ policy.product.name }}
+                        </strong>
+
+                        <br>
+
+                        <small>
+                            {{ policy.policy_number }}
+                        </small>
+
+                        <span class="badge bg-success float-end">
+                            {{ policy.get_status_display }}
+                        </span>
+
+                    </div>
+
+                    {% empty %}
+
+                    <p class="text-muted mt-3">
+                        Vous n'avez encore aucun contrat.
+                    </p>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

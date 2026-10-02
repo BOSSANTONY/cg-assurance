@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+Déclarer un sinistre | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h2>
+            Déclarer un sinistre
+        </h2>
+
+        <p class="text-muted">
+            Remplissez les informations concernant
+            l'incident.
+        </p>
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+
+            <button
+                type="submit"
+                class="btn btn-danger w-100"
+            >
+                Déclarer le sinistre
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

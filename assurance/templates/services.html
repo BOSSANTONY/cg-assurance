@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+Nos assurances | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <div class="container text-center">
+
+        <span class="section-label">
+            NOS SOLUTIONS
+        </span>
+
+        <h1>
+            Des protections pour chaque situation
+        </h1>
+
+        <p>
+            Découvrez nos différentes solutions d'assurance.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            {% for product in products %}
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="insurance-card">
+
+                    <div class="card-icon">
+
+                        <i class="bi bi-shield-check"></i>
+
+                    </div>
+
+                    <h3>
+                        {{ product.name }}
+                    </h3>
+
+                    <p>
+                        {{ product.description }}
+                    </p>
+
+                    <h5>
+                        À partir de
+                        {{ product.price }}
+                        FCFA
+                    </h5>
+
+                    <a
+                        href="{% url 'quote_create' %}"
+                        class="btn btn-primary-custom mt-3"
+                    >
+                        Demander un devis
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

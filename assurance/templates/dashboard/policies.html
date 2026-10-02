@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mes contrats | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <div class="container">
+
+        <span class="section-label">
+            MON ESPACE
+        </span>
+
+        <h1>
+            Mes contrats
+        </h1>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        {% for policy in policies %}
+
+        <div class="dashboard-card mb-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-7">
+
+                    <h3>
+                        {{ policy.product.name }}
+                    </h3>
+
+                    <p>
+                        Numéro :
+                        <strong>
+                            {{ policy.policy_number }}
+                        </strong>
+                    </p>
+
+                    <p>
+                        Du {{ policy.start_date }}
+                        au {{ policy.end_date }}
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-5 text-md-end">
+
+                    <h4>
+                        {{ policy.premium }} FCFA
+                    </h4>
+
+                    <span class="badge bg-success">
+                        {{ policy.get_status_display }}
+                    </span>
+
+                    <br>
+
+                    <a
+                        href="{% url 'claim_create' %}?policy={{ policy.id }}"
+                        class="btn btn-outline-danger mt-3"
+                    >
+                        Déclarer un sinistre
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="text-center py-5">
+
+            <h3>
+                Aucun contrat
+            </h3>
+
+            <p>
+                Demandez votre premier devis.
+            </p>
+
+            <a
+                href="{% url 'quote_create' %}"
+                class="btn btn-primary-custom"
+            >
+                Demander un devis
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

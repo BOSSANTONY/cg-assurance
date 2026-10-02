@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tarifs | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header text-center">
+
+    <div class="container">
+
+        <span class="section-label">
+            NOS TARIFS
+        </span>
+
+        <h1>
+            Des solutions adaptées à votre budget
+        </h1>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            {% for product in products %}
+
+            <div class="col-lg-4">
+
+                <div class="insurance-card text-center">
+
+                    <h3>
+                        {{ product.name }}
+                    </h3>
+
+                    <div class="display-6 fw-bold my-4">
+
+                        {{ product.price }}
+
+                        <small>
+                            FCFA
+                        </small>
+
+                    </div>
+
+                    <p>
+                        {{ product.description }}
+                    </p>
+
+                    <a
+                        href="{% url 'quote_create' %}"
+                        class="btn btn-primary-custom"
+                    >
+                        Obtenir un devis
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

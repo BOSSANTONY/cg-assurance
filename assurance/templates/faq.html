@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}
+FAQ | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header text-center">
+
+    <div class="container">
+
+        <h1>
+            Questions fréquentes
+        </h1>
+
+        <p>
+            Les réponses aux questions les plus courantes.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div
+            class="accordion"
+            id="faqAccordion"
+        >
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button
+                        class="accordion-button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq1"
+                    >
+                        Comment créer un compte ?
+                    </button>
+
+                </h2>
+
+                <div
+                    id="faq1"
+                    class="accordion-collapse collapse show"
+                    data-bs-parent="#faqAccordion"
+                >
+
+                    <div class="accordion-body">
+
+                        Cliquez sur « Créer un compte »,
+                        remplissez vos informations puis
+                        connectez-vous à votre espace client.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button
+                        class="accordion-button collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq2"
+                    >
+                        Comment déclarer un sinistre ?
+                    </button>
+
+                </h2>
+
+                <div
+                    id="faq2"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                >
+
+                    <div class="accordion-body">
+
+                        Connectez-vous à votre espace client,
+                        ouvrez « Sinistres » puis cliquez
+                        sur « Déclarer un sinistre ».
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button
+                        class="accordion-button collapsed"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#faq3"
+                    >
+                        Puis-je consulter mon contrat en ligne ?
+                    </button>
+
+                </h2>
+
+                <div
+                    id="faq3"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#faqAccordion"
+                >
+
+                    <div class="accordion-body">
+
+                        Oui. Vos contrats sont disponibles
+                        dans votre espace client.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

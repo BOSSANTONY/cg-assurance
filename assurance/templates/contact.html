@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <div class="container">
+
+        <h1>
+            Contactez-nous
+        </h1>
+
+        <p>
+            Notre équipe est là pour vous accompagner.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <div class="col-lg-5">
+
+                <h2>
+                    Parlons de votre protection.
+                </h2>
+
+                <p>
+                    Une question concernant une assurance,
+                    un contrat ou un sinistre ?
+                    Envoyez-nous un message.
+                </p>
+
+
+                <div class="mt-4">
+
+                    <p>
+                        <i class="bi bi-geo-alt text-success"></i>
+                        Brazzaville, Congo
+                    </p>
+
+                    <p>
+                        <i class="bi bi-telephone text-success"></i>
+                        +242 06 472 39 06
+                    </p>
+
+                    <p>
+                        <i class="bi bi-envelope text-success"></i>
+                        mantonych17@gmail.com
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-7">
+
+                <div class="dashboard-card">
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+
+                        <button
+                            class="btn btn-primary-custom"
+                            type="submit"
+                        >
+                            Envoyer le message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

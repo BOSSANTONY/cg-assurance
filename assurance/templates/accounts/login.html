@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block title %}
+Connexion | CG-Assurance
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-page">
+
+    <div class="auth-layout">
+
+        <!-- Présentation -->
+        <div class="auth-intro">
+
+            <span class="brand-icon">
+                CG
+            </span>
+
+            <span class="section-label">
+                ESPACE CLIENT
+            </span>
+
+            <h1>
+                Bon retour chez
+                <span>CG-Assurance</span>
+            </h1>
+
+            <p>
+                Connectez-vous à votre espace client pour retrouver
+                vos contrats, vos devis, vos sinistres et vos documents.
+            </p>
+
+            <div class="auth-benefits">
+
+                <div class="auth-benefit">
+                    <div class="auth-benefit-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>Vos contrats</strong>
+                        <span>Consultez facilement vos assurances.</span>
+                    </div>
+                </div>
+
+                <div class="auth-benefit">
+                    <div class="auth-benefit-icon">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+
+                    <div>
+                        <strong>Vos documents</strong>
+                        <span>Accédez à vos documents à tout moment.</span>
+                    </div>
+                </div>
+
+                <div class="auth-benefit">
+                    <div class="auth-benefit-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+
+                    <div>
+                        <strong>Un espace simple</strong>
+                        <span>Gérez vos démarches depuis un seul endroit.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Formulaire -->
+        <div class="auth-card">
+
+            <div class="auth-card-header">
+
+                <h2>
+                    Connexion
+                </h2>
+
+                <p>
+                    Entrez vos identifiants pour accéder à votre compte.
+                </p>
+
+            </div>
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                {% if form.non_field_errors %}
+                    <div class="form-errors">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+
+                <div class="auth-form-grid">
+
+                    {% for field in form %}
+
+                        <div class="form-group">
+
+                            <label for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                            </label>
+
+                            {{ field }}
+
+                            {% if field.help_text %}
+                                <small class="help-text">
+                                    {{ field.help_text }}
+                                </small>
+                            {% endif %}
+
+                            {% if field.errors %}
+                                <div class="field-errors">
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                {% if next %}
+                    <input
+                        type="hidden"
+                        name="next"
+                        value="{{ next }}"
+                    >
+                {% endif %}
+
+
+                <div class="form-actions">
+
+                    <button
+                        class="btn-form btn-primary-form"
+                        type="submit"
+                    >
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Se connecter
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <div class="auth-link">
+
+                <span>
+                    Pas encore de compte ?
+                </span>
+
+                <a href="{% url 'register' %}">
+                    Créer un compte
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        CG-Assurance
+        {% endblock %}
+    </title>
+
+    <meta
+        name="description"
+        content="CG-Assurance - Votre protection, notre engagement."
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'assurance/css/style.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand fw-bold"
+            href="{% url 'home' %}"
+        >
+            <span class="brand-icon">
+                CG
+            </span>
+
+            CG-Assurance
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="{% url 'home' %}"
+                    >
+                        Accueil
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="{% url 'services' %}"
+                    >
+                        Nos assurances
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="{% url 'pricing' %}"
+                    >
+                        Tarifs
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="{% url 'faq' %}"
+                    >
+                        FAQ
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="{% url 'contact' %}"
+                    >
+                        Contact
+                    </a>
+                </li>
+
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item ms-lg-3">
+
+                    <a
+                        class="btn btn-primary-custom"
+                        href="{% url 'dashboard' %}"
+                    >
+                        Mon espace
+                    </a>
+
+                </li>
+
+                {% else %}
+
+                <li class="nav-item ms-lg-3">
+
+                    <a
+                        class="btn btn-outline-primary"
+                        href="{% url 'login' %}"
+                    >
+                        Connexion
+                    </a>
+
+                </li>
+
+                <li class="nav-item ms-lg-2">
+
+                    <a
+                        class="btn btn-primary-custom"
+                        href="{% url 'register' %}"
+                    >
+                        Créer un compte
+                    </a>
+
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+{% if messages %}
+
+<div class="container messages-container">
+
+    {% for message in messages %}
+
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <div class="col-lg-4">
+
+                <h4>
+                    <span class="brand-icon">
+                        CG
+                    </span>
+                    CG-Assurance
+                </h4>
+
+                <p>
+                    Une protection simple, transparente
+                    et accessible pour vous,
+                    votre famille et votre entreprise.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-2">
+
+                <h6>Navigation</h6>
+
+                <a href="{% url 'home' %}">
+                    Accueil
+                </a>
+
+                <a href="{% url 'services' %}">
+                    Assurances
+                </a>
+
+                <a href="{% url 'pricing' %}">
+                    Tarifs
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h6>Assistance</h6>
+
+                <a href="{% url 'faq' %}">
+                    FAQ
+                </a>
+
+                <a href="{% url 'contact' %}">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h6>Contact</h6>
+
+                <p>
+                    Brazzaville, Congo
+                </p>
+
+                <p>
+                    +242 06 472 39 06
+                </p>
+
+                <p>
+                    mantonych17@gmail.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+        <p class="text-center mb-0">
+
+            © {% now "Y" %}
+            CG-Assurance. crée par Antony Christ MABIALA
+            Tous droits réservés.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script
+src="{% static 'assurance/js/main.js' %}">
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mes devis | CG-Assurance
+{% endblock %}
+
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <div class="container">
+
+        <h1>
+            Mes demandes de devis
+        </h1>
+
+    </div>
+
+</section>
+
+
+<section class="dashboard-section">
+
+    <div class="container">
+
+        <a
+            href="{% url 'quote_create' %}"
+            class="btn btn-primary-custom mb-4"
+        >
+            Nouveau devis
+        </a>
+
+
+        {% for quote in quotes %}
+
+        <div class="dashboard-card mb-3">
+
+            <h4>
+                {{ quote.product.name }}
+            </h4>
+
+            <p>
+                {{ quote.created_at|date:"d/m/Y H:i" }}
+            </p>
+
+            <span class="badge bg-secondary">
+                {{ quote.get_status_display }}
+            </span>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            Vous n'avez aucune demande de devis.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
