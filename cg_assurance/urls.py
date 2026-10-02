@@ -24,6 +24,12 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     path("admin/", admin.site.urls),
+         path(
+    "sitemap.xml",
+    sitemap,
+    {"sitemaps": {"static": StaticViewSitemap}},
+    name="django.contrib.sitemaps.views.sitemap",
+),
 
     path("", include("assurance.urls")),
 
