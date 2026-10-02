@@ -12,6 +12,11 @@ urlpatterns = [
         views.home,
         name="home"
     ),
+    path(
+    "robots.txt",
+    views.robots_txt,
+    name="robots_txt"
+),
 
     path(
         "services/",
